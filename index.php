@@ -77,3 +77,20 @@ echo "$str - " . checkBrackets($str, $brackets);
     Простые делители числа 13195 - это 5, 7, 13 и 29.
     Каков самый большой делитель числа 600851475143, являющийся простым числом? 
 */
+echo "<br><br>Задание №3<br>
+Простые делители числа 13195 - это 5, 7, 13 и 29.<br>
+Каков самый большой делитель числа 600851475143, являющийся простым числом?<br>";
+$start = microtime(true);
+$number = 600851475143;
+$splStack = new SplStack();
+$i = 3;
+while($i <= $number) {
+    if($number % $i == 0){
+        $splStack->push($i);
+        $number = $number / $i;
+    }
+    $i++;
+}
+
+echo "Cамый большой делитель числа ${$number} равен " . $splStack->top() . "<br>Время выполнения программы ";
+echo  microtime(true)  - $start;
